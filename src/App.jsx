@@ -1,34 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useRef, useEffect } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { Physics, Debug } from '@react-three/cannon'
+import { Container, ScreenSettings } from './components'
+import { CameraControls } from '@react-three/drei';
+import { Box3 } from "three";
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const controlsRef = useRef(null);
+  const boxRef = useRef(null)
+
+  const fitToBox = () => {
+    const controls = controlsRef.current;
+    const mesh = boxRef.current;
+    if (!controls || !mesh) {
+      return;
+    }
+    const box3 = new Box3().setFromObject(mesh);
+    controls.fitToBox(box3, true, {
+      paddingTop: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingRight: 0
+    });
+  };
+
+  useEffect(() => {
+    setTimeout(fitToBox, 500)
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='App'>
+      <Canvas>
+        <CameraControls makeDefault ref={controlsRef} />
+        <Physics defaultContactMaterial={{ friction: 0.7, restitution: 0.4 }}>
+          <Debug scale={1} color='green'>
+            <Container ref={boxRef} />
+          </Debug>
+        </Physics>
+      </Canvas>
+      <ScreenSettings />
+    </div>
   )
 }
 
