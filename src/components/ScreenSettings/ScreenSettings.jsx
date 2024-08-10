@@ -1,7 +1,7 @@
 import { useRgbStore } from '../../store/rgbStore'
 import { useEffect } from 'react'
 
-export const ScreenSettings = () => {
+const ScreenSettings = () => {
   const setScreen = useRgbStore(state => state.setScreen);
 
   const handleUpdateScreenSettings = () => {
@@ -20,3 +20,5 @@ export const ScreenSettings = () => {
 
   return null
 }
+
+export default ScreenSettings

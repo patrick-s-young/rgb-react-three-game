@@ -10,7 +10,7 @@ const containerWallProps = {
   front: { size: [], position: [],  key: 'C05', name: 'front'}
 }
 
-export const Container = forwardRef((props, ref) => {
+const Container = forwardRef((props, ref) => {
   const { containerWidth, containerHeight,  containerDepth, containerThickness } = useRgbStore((state) => state)
   // bottom
   containerWallProps.bottom.size = [
@@ -71,3 +71,5 @@ export const Container = forwardRef((props, ref) => {
     </group>
   )
 })
+
+export default Container
