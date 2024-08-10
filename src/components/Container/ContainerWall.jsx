@@ -16,6 +16,7 @@ export const ContainerWall = ({
   return (
     <mesh ref={ref} name={name}>
       <boxGeometry args={size}/>
+      <meshStandardMaterial visible={false} />
     </mesh>
   )
 }

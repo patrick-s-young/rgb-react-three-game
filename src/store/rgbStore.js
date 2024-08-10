@@ -10,7 +10,7 @@ const GAME_STAGES = {
 }
 
 const CONTAINER_WIDTH = 10
-const SHAPE_WIDTH_HEIGHT = CONTAINER_WIDTH * .32
+const SHAPE_WIDTH_HEIGHT = CONTAINER_WIDTH * .28
 const CONTAINER_THICKNESS = .5
 
 export const useRgbStore = create((set) => ({
