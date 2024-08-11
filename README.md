@@ -1,5 +1,7 @@
 # R/G/B: a Tetris-like game of stacking.
 
+Stack to the top without allowing same-color shapes to touch.
+
 This is a work in progress.
 
 ## Built With
