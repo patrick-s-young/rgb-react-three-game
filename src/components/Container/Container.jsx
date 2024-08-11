@@ -1,5 +1,5 @@
-import { useRgbStore } from '../../store/rgbStore'
-import { ContainerWall } from './ContainerWall'
+import useStore from '../../store/useStore'
+import ContainerWall from './ContainerWall'
 import { forwardRef } from 'react';
 
 const containerWallProps = {
@@ -11,12 +11,12 @@ const containerWallProps = {
 }
 
 const Container = forwardRef((props, ref) => {
-  const { containerWidth, containerHeight,  containerDepth, containerThickness } = useRgbStore((state) => state)
+  const { spawnShape, containerWidth, containerHeight,  containerDepth, containerThickness } = useStore((state) => state)
   // bottom
   containerWallProps.bottom.size = [
     containerWidth + containerThickness, 
     containerThickness,  
-    containerDepth]
+    containerDepth + 1]
   // left
   containerWallProps.left.size = [
     containerThickness, 
@@ -43,7 +43,7 @@ const Container = forwardRef((props, ref) => {
   containerWallProps.back.position = [
     0, 
     containerHeight * .5, 
-    -containerDepth * .5]
+    -containerDepth * .6]
   // front
   containerWallProps.front.size = [
     containerWidth, 
@@ -52,10 +52,15 @@ const Container = forwardRef((props, ref) => {
   containerWallProps.front.position = [
     0, 
     containerHeight * .5, 
-    containerDepth * .5]
+    containerDepth * .6]
+
+ const handleOnClick = (e) => {
+  const { x, y } = e.point
+  spawnShape({ x, y})
+ }
 
   return (
-    <group ref={ref}>
+    <group ref={ref} name='Container'>
       {Object.keys(containerWallProps).map((wallName) => {
         const { size, position, key } = containerWallProps[wallName]
         return (
@@ -64,6 +69,7 @@ const Container = forwardRef((props, ref) => {
           position={position}
           key={key}
           name={wallName}
+          onClick={wallName === 'front' ? handleOnClick : undefined}
         /> 
         )
       })

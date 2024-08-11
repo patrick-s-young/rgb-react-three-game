@@ -1,8 +1,8 @@
-import { useRgbStore } from '../../store/rgbStore'
+import useStore from '../../store/useStore'
 import { useEffect } from 'react'
 
 const ScreenSettings = () => {
-  const setScreen = useRgbStore(state => state.setScreen);
+  const setScreen = useStore(state => state.setScreen);
 
   const handleUpdateScreenSettings = () => {
     setScreen({ 

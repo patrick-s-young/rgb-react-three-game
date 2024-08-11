@@ -1,11 +1,11 @@
 // physics body
 import { useBox } from '@react-three/cannon'
 
-export const ContainerWall = ({
+const ContainerWall = ({
   size,
   position,
-  name
-}) => {
+  name,
+  onClick }) => {
 
   const [ref] = useBox(() => ({
     args: size,
@@ -14,9 +14,11 @@ export const ContainerWall = ({
 
 
   return (
-    <mesh ref={ref} name={name}>
+    <mesh ref={ref} name={name} onClick={onClick}>
       <boxGeometry args={size}/>
       <meshStandardMaterial visible={false} />
     </mesh>
   )
 }
+
+export default ContainerWall

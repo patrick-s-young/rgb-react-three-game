@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react'
-import { useRgbStore } from './store/rgbStore'
+import useStore from './store/useStore'
 import { Canvas } from '@react-three/fiber'
 import { Physics, Debug } from '@react-three/cannon'
 import {   
@@ -11,7 +11,6 @@ import { Box3 } from "three";
 import './App.css'
 
 function App() {
-  const { spawnShape } = useRgbStore((state) => state)
   const controlsRef = useRef(null);
   const boxRef = useRef(null)
 
@@ -32,18 +31,16 @@ function App() {
 
   useEffect(() => {
     setTimeout(fitToBox, 250)
-    const interval = setInterval(() => spawnShape(), 2000);
-    return () => clearInterval(interval);
   }, [])
 
   return (
     <div className='App'>
       <ScreenSettings />
-      <Canvas>
+      <Canvas camera={{ fov: 5 }}>
         <CameraControls makeDefault ref={controlsRef} />
         <hemisphereLight args={[0x606060, 0x404040]} />
         <directionalLight position={[1, 1, 1]}/>
-        <Physics>
+        <Physics defaultContactMaterial={{ friction: 0.1, restitution: 0.5 }} gravity={[0, -19, 0]}>
           <Debug scale={1} color='green'>
             <ShapeController/>
             <Container ref={boxRef} />
