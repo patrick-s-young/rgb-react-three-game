@@ -8,7 +8,6 @@ const SHAPES = {
 const CreateShape = ({
   type,
   props,
-  key
-}) => SHAPES[type]({props, key})
+  key }) => SHAPES[type]({props, key})
 
 export default CreateShape

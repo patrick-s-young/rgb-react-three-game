@@ -10,13 +10,13 @@ const GAME_STAGES = {
 }
 
 const CONTAINER_WIDTH = 10
-const CONTAINER_DEPTH = CONTAINER_WIDTH * .30
+const CONTAINER_DEPTH = CONTAINER_WIDTH * .33
 const CONTAINER_WALL_THICKNESS = .5
-const SHAPE_WIDTH_HEIGHT = CONTAINER_DEPTH * .75
+const SHAPE_WIDTH_HEIGHT = CONTAINER_DEPTH * .9
 const SHAPE_COLORS = ['#ff0000', '#00ff00', '#0000ff']
 
 
-export const useRgbStore = create((set) => ({
+const useStore = create((set) => ({
   // container
   containerDepth: CONTAINER_DEPTH,
   containerHeight: undefined,
@@ -28,15 +28,20 @@ export const useRgbStore = create((set) => ({
   shapeWidthHeight: SHAPE_WIDTH_HEIGHT,
   shapes: [],
   shapeId: 2,
-  spawnShape: () => {
+  spawnShape: ({x, y}) => {
     set((state) => {
       const _shapeId = state.shapeId +1
       const _sphereProps = getSphereProps({ 
         shapeId: _shapeId,
-        dropPositionY: CONTAINER_WIDTH * 2
+        dropPosition: [x, y, 0]
       })
       return { shapes: [...state.shapes, _sphereProps], shapeId: _shapeId}
     })
+  },
+  removeShape: (name) => {
+    console.log('removeShape: name ', name)
+    set((state) => ({ 
+      shapes: [...state.shapes.filter(item => item.props.name !== name)]}))
   },
   // device
   screenOrientation: undefined,
@@ -49,16 +54,16 @@ export const useRgbStore = create((set) => ({
 
 const getSphereProps = ({
   shapeId,
-  dropPositionY
+  dropPosition
  }) => ({
   type: 'sphere',
   props: { 
     radius: [SHAPE_WIDTH_HEIGHT * .5], 
-    dropPosition: [getDropX(), dropPositionY, 0],
     color: SHAPE_COLORS[shapeId % 3],
-    name: shapeId
+    name: shapeId,
+    dropPosition
   },
   key: shapeId,
 }) 
 
-const getDropX = () => Math.random(5)
+export default useStore
