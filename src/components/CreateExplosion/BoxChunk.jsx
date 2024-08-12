@@ -2,17 +2,15 @@ import { useRef } from "react";
 import { useBox } from '@react-three/cannon';
 
 
-const Box = ({
+const BoxChunk = ({
   color, 
-  dropPosition,
-  handleOnCollide,
+  startPosition,
   name,
   size }) => {
   const [ref] = useBox(() => ({
     args: size,
-    position: [...dropPosition],
-    mass: 1,
-    onCollide: handleOnCollide
+    position: [...startPosition],
+    mass: 1
   }), useRef(null));
 
   return (
@@ -23,4 +21,4 @@ const Box = ({
   )
 }
 
-export default Box
+export default BoxChunk

@@ -9,10 +9,12 @@ const useStore = create(
     containerHeight: undefined,
     containerThickness: CONTAINER.wallThickness,
     containerWidth: CONTAINER.width,
+    // exposions
+    explosions: {},
     // shapes
     shapes: [],
     shapeId: 2,
-    shapeLevel: 'boxes',
+    shapeLevel: 'sphereBoxSphere',
     spawnShape: ({x, y}) => {
       set((state) => {
         const _shapeId = state.shapeId + 1
@@ -23,7 +25,15 @@ const useStore = create(
         return { shapes: [...state.shapes, _shapeProps], shapeId: _shapeId}
       })
     },
-    removeShape: (name) => { set((state) => ({ shapes: [...state.shapes.filter(item => item.props.name !== name)]}))},
+    removeShape: ({ name, position }) => { 
+      set((state) => ({ shapes: [...state.shapes.filter(item => item.props.name !== name)]}))
+      set((state) => {
+        if (state.explosions[`explode${name}`]) {
+          return { explosions: {...state.explosions}}
+        }
+        return { explosions: {...state.explosions, [`explode${name}`]:position }}
+      })
+    },
     // device
     screenOrientation: undefined,
     setScreen: ({ width, height, orientation }) => set((state) => ({ 

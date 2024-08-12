@@ -3,11 +3,22 @@ import CreateShape from '../CreateShape/CreateShape'
 
 
 const ShapeController = () => {
-  const { shapes } = useStore((state) => state)
+  const { shapes, removeShape } = useStore((state) => state)
+
+  const handleOnCollide = (e) => {
+    if (e.body?.isShape && e.body.color === e.target.color)  {
+      removeShape({ name: e.target.name, position: Object.values(e.target.position) }) 
+    }
+  }
 
   return (
     <group>
-      {shapes.map((item) => CreateShape({...item}))}
+      { shapes.map(({ type, props, key }) => CreateShape({
+          type, 
+          props: {...props, handleOnCollide},
+          key
+        })
+      )}
     </group>
   )
 }

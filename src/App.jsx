@@ -1,11 +1,11 @@
 import { useRef, useEffect } from 'react'
-import useStore from './store/useStore'
 import { Canvas } from '@react-three/fiber'
 import { Physics, Debug } from '@react-three/cannon'
 import {   
   Container,
-  ShapeController,
-  ScreenSettings } from './components'
+  ExplosionController,
+  ScreenSettings,
+  ShapeController } from './components'
 import { CameraControls } from '@react-three/drei';
 import { Box3 } from "three";
 import './App.css'
@@ -43,6 +43,7 @@ function App() {
         <Physics defaultContactMaterial={{ friction: 0.1, restitution: 0.5 }} gravity={[0, -19, 0]}>
           <Debug scale={1} color='green'>
             <ShapeController/>
+            <ExplosionController/>
             <Container ref={boxRef} />
           </Debug>
         </Physics>
