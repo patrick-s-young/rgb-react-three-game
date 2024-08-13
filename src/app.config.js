@@ -39,3 +39,10 @@ export const GAME_STAGES = {
   LOSE: 'LOSE',
   PAUSE: 'PAUSE'
 }
+
+export const COLLISION_GROUPS = {
+  CONTAINER: 2 ** 0,
+  SHAPE: 2 ** 1,
+  CHUNK: 2 ** 2,
+  FLOOR: 2 ** 3
+}

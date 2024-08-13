@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useBox } from '@react-three/cannon';
-
+import { COLLISION_GROUPS } from '../../app.config';
 
 const Box = ({
   color, 
@@ -9,6 +9,8 @@ const Box = ({
   name,
   size }) => {
   const [ref] = useBox(() => ({
+    collisionFilterGroup: COLLISION_GROUPS.SHAPE,
+    collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
     args: size,
     position: [...dropPosition],
     mass: 1,

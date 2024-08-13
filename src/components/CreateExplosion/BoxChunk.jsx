@@ -1,5 +1,6 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 import { useBox } from '@react-three/cannon';
+import { COLLISION_GROUPS } from '../../app.config';
 
 
 const BoxChunk = ({
@@ -8,9 +9,12 @@ const BoxChunk = ({
   name,
   size }) => {
   const [ref] = useBox(() => ({
+    collisionFilterGroup: COLLISION_GROUPS.CHUNK,
+    collisionFilterMask: COLLISION_GROUPS.CHUNK, // add floor
     args: size,
     position: [...startPosition],
-    mass: 1
+    mass: 1,
+    velocity: [0, 20, 0]
   }), useRef(null));
 
   return (
