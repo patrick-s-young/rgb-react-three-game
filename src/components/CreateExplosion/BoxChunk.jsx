@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useBox } from '@react-three/cannon';
 
-
 const BoxChunk = ({
   angularVelocity,
   args,
@@ -32,7 +31,10 @@ const BoxChunk = ({
   }, [])
 
   useEffect(() => {
-    const _intervalId  = setInterval(() => handleRemoveChunk({ chunkPosition: _positionRef.current, chunkName: name }), 1000)
+    const _intervalId  = setInterval(() => handleRemoveChunk({ 
+      chunkPosition: _positionRef.current, 
+      chunkName: name 
+    }), 1000)
     return () => clearInterval(_intervalId)
   }, [])
 

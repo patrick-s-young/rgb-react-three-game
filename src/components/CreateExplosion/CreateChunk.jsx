@@ -1,7 +1,8 @@
 import BoxChunk from "./BoxChunk";
+import SphereChunk from "./SphereChunk";
 
 const CHUNKS = {
-  //'sphere': ({ props, key }) => <Sphere {...props} key={key}/>,
+  'sphereChunk': ({ props, key }) => <SphereChunk {...props} key={key}/>,
   'boxChunk': ({ props, key }) => <BoxChunk {...props} key={key}/>
 }
 

@@ -14,7 +14,7 @@ const useStore = create(
     // shapes
     shapes: [],
     shapeId: 2,
-    shapeLevel: 'boxes',
+    shapeLevel: 'spheres',
     spawnShape: ({x, y}) => {
       set((state) => {
         const _shapeId = state.shapeId + 1
