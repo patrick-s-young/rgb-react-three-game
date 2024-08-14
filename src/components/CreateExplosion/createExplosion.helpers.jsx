@@ -1,21 +1,26 @@
-import { EXPLOSION } from '../../app.config'
+import { CHUNK } from '../../app.config'
 
 export const getChunkProps = ({
-  shapeLevel,
-  shapeId,
-  dropPosition
+  chunkType,
+  chunkIndex,
+  color,
+  name,
+  startPosition
  }) => {
-  const _shapeIndex = shapeId % 3
-  const _shapeType = (SHAPE.levels[shapeLevel])[_shapeIndex]
   return {
-    type: _shapeType,
+    chunkType,
     props: { 
-      ...SHAPE.geometryArgs[_shapeType],
-      color: SHAPE.colors[_shapeIndex],
-      name: shapeId,
-      dropPosition
+      angularVelocity: CHUNK.angularVelocity[chunkIndex],
+      args: CHUNK.args[chunkType],
+      collisionFilterGroup: CHUNK.collisionFilterGroup, 
+      collisionFilterMask: CHUNK.collisionFilterMask,
+      color,
+      mass: CHUNK.mass,
+      name: `${name}_${chunkIndex}`,
+      position: CHUNK.position({ startPosition, chunkIndex }),
+      velocity: CHUNK.velocity[chunkIndex]
     },
-    key: shapeId,
+    key: `${name}_${chunkIndex}`,
   }
 
  }

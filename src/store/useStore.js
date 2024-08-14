@@ -14,7 +14,7 @@ const useStore = create(
     // shapes
     shapes: [],
     shapeId: 2,
-    shapeLevel: 'sphereBoxSphere',
+    shapeLevel: 'boxes',
     spawnShape: ({x, y}) => {
       set((state) => {
         const _shapeId = state.shapeId + 1
@@ -25,13 +25,27 @@ const useStore = create(
         return { shapes: [...state.shapes, _shapeProps], shapeId: _shapeId}
       })
     },
-    removeShape: ({ name, position }) => { 
+    removeShape: ({ name, position, color, chunkType }) => { 
       set((state) => ({ shapes: [...state.shapes.filter(item => item.props.name !== name)]}))
       set((state) => {
         if (state.explosions[`explode${name}`]) {
           return { explosions: {...state.explosions}}
         }
-        return { explosions: {...state.explosions, [`explode${name}`]:position }}
+        return { explosions: {...state.explosions, 
+          [`explode${name}`]: {
+            startPosition: position,
+            name: `explode${name}`,
+            color,
+            chunkType
+          }
+        }}
+      })
+    },
+    removeExplosion: (name) => {
+      set((state) => { 
+        const _explosions = state.explosions
+        delete _explosions[name]
+        return { explosions: {..._explosions}}
       })
     },
     // device

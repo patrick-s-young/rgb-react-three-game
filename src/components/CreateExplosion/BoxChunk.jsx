@@ -1,25 +1,44 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useBox } from '@react-three/cannon';
-import { COLLISION_GROUPS } from '../../app.config';
 
 
 const BoxChunk = ({
-  color, 
-  startPosition,
+  angularVelocity,
+  args,
+  collisionFilterGroup, 
+  collisionFilterMask,
+  color,
+  mass,
   name,
-  size }) => {
-  const [ref] = useBox(() => ({
-    collisionFilterGroup: COLLISION_GROUPS.CHUNK,
-    collisionFilterMask: COLLISION_GROUPS.CHUNK, // add floor
-    args: size,
-    position: [...startPosition],
-    mass: 1,
-    velocity: [0, 20, 0]
+  position,
+  velocity,
+  handleRemoveChunk
+}) => {
+  const _positionRef = useRef([0, 50, 0])
+  const [ref, api] = useBox(() => ({
+    angularVelocity,
+    args,
+    collisionFilterGroup, 
+    collisionFilterMask,
+    mass,
+    name,
+    position,
+    velocity
   }), useRef(null));
+
+  useEffect(() => {
+    const unsubscribe = api.position.subscribe((pos) => (_positionRef.current = pos))
+    return unsubscribe
+  }, [])
+
+  useEffect(() => {
+    const _intervalId  = setInterval(() => handleRemoveChunk({ chunkPosition: _positionRef.current, chunkName: name }), 1000)
+    return () => clearInterval(_intervalId)
+  }, [])
 
   return (
     <mesh ref={ref} name={name} color={color} isShape={true}>
-      <boxGeometry args={size}/>
+      <boxGeometry args={args}/>
       <meshStandardMaterial color={color} />
     </mesh>
   )
