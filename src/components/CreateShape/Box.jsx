@@ -1,30 +1,44 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useBox } from '@react-three/cannon';
-import useStore from '../../store/useStore';
+import { COLLISION_GROUPS } from '../../app.config';
 
 const Box = ({
-  size,
-  dropPosition,
   color, 
-  name }) => {
-  const removeShape = useStore(state => state.removeShape);
-  const [ref] = useBox(() => ({
+  dropPosition,
+  handleRemoveShape,
+  name,
+  size }) => {
+  const _positionRef = useRef([0, 50, 0])
+  const [ref, api] = useBox(() => ({
+    collisionFilterGroup: COLLISION_GROUPS.SHAPE,
+    collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
     args: size,
     position: [...dropPosition],
     mass: 1,
-    onCollide: (e) => { 
-      if (e.body?.isShape && e.body.color === color)  {
-        removeShape(name) 
-      }
-    }
+    onCollide: handleOnCollide
   }), useRef(null));
 
+  const handleOnCollide = (e) => {
+    if (e.body?.isShape && e.body.color === e.target.color)  {
+      handleRemoveShape({ 
+        name: e.target.name, 
+        position: _positionRef.current,
+        color: e.target.color,
+        chunkType: 'boxChunk'
+      }) 
+    }
+  }
+
+  useEffect(() => {
+    const unsubscribe = api.position.subscribe((pos) => (_positionRef.current = pos))
+    return unsubscribe
+  }, [])
 
   return (
-  <mesh ref={ref} name={name} color={color} isShape={true}>
-    <boxGeometry args={size}/>
-    <meshStandardMaterial color={color} />
-  </mesh>
+    <mesh ref={ref} name={name} color={color} isShape={true}>
+      <boxGeometry args={size}/>
+      <meshStandardMaterial color={color} />
+    </mesh>
   )
 }
 

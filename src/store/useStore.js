@@ -9,6 +9,8 @@ const useStore = create(
     containerHeight: undefined,
     containerThickness: CONTAINER.wallThickness,
     containerWidth: CONTAINER.width,
+    // exposions
+    explosions: {},
     // shapes
     shapes: [],
     shapeId: 2,
@@ -23,7 +25,29 @@ const useStore = create(
         return { shapes: [...state.shapes, _shapeProps], shapeId: _shapeId}
       })
     },
-    removeShape: (name) => { set((state) => ({ shapes: [...state.shapes.filter(item => item.props.name !== name)]}))},
+    removeShape: ({ name, position, color, chunkType }) => { 
+      set((state) => ({ shapes: [...state.shapes.filter(item => item.props.name !== name)]}))
+      set((state) => {
+        if (state.explosions[`explode${name}`]) {
+          return { explosions: {...state.explosions}}
+        }
+        return { explosions: {...state.explosions, 
+          [`explode${name}`]: {
+            startPosition: position,
+            name: `explode${name}`,
+            color,
+            chunkType
+          }
+        }}
+      })
+    },
+    removeExplosion: (name) => {
+      set((state) => { 
+        const _explosions = state.explosions
+        delete _explosions[name]
+        return { explosions: {..._explosions}}
+      })
+    },
     // device
     screenOrientation: undefined,
     setScreen: ({ width, height, orientation }) => set((state) => ({ 

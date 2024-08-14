@@ -3,11 +3,25 @@ import CreateShape from '../CreateShape/CreateShape'
 
 
 const ShapeController = () => {
-  const { shapes } = useStore((state) => state)
+  const { shapes, removeShape } = useStore((state) => state)
+
+  const handleRemoveShape = ({ name, position, color, chunkType }) => {
+    removeShape({ 
+      name, 
+      position,
+      color,
+      chunkType
+    }) 
+  }
 
   return (
     <group>
-      {shapes.map((item) => CreateShape({...item}))}
+      { shapes.map(({ type, props, key }) => CreateShape({
+          type, 
+          props: {...props, handleRemoveShape},
+          key
+        })
+      )}
     </group>
   )
 }
