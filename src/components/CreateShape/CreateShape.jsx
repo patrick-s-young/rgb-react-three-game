@@ -6,7 +6,6 @@ const SHAPES = {
   'box': ({ props, key }) => <Box {...props} key={key}/>
 }
 
-
 const CreateShape = ({
   type,
   props,
