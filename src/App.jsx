@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Physics, Debug } from '@react-three/cannon'
 import {   
+  ChunkContainer,
   Container,
   ExplosionController,
   ScreenSettings,
@@ -44,7 +45,8 @@ function App() {
           <Debug scale={1} color='green'>
             <ShapeController/>
             <ExplosionController/>
-            <Container ref={boxRef} />
+            <Container ref={boxRef}/>
+            <ChunkContainer/>
           </Debug>
         </Physics>
       </Canvas>
