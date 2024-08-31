@@ -1,7 +1,7 @@
 
 
-const CONTAINER_WIDTH = 10
-const SHAPE_WIDTH_HEIGHT = CONTAINER_WIDTH * .33 * 0.8
+export const CONTAINER_WIDTH = 10
+export const SHAPE_WIDTH_HEIGHT = CONTAINER_WIDTH * .33 * 0.8
 const CHUNK_WIDTH_HEIGHT = SHAPE_WIDTH_HEIGHT * 0.5
 const CHUNK_START_POSITION_OFFSET = CHUNK_WIDTH_HEIGHT * 0.5
 
@@ -18,8 +18,6 @@ export const CONTAINER = {
   wallThickness: .5,
 }
 
-
-
 export const SHAPE = {
   colors: ['#ff0000', '#00ff00', '#0000ff'],
   widthHeight: SHAPE_WIDTH_HEIGHT,
@@ -35,7 +33,7 @@ export const SHAPE = {
   }
 }
 
-
+export const LEVEL_ORDER = ['spheres', 'boxes', 'sphereBoxSphere', 'boxSphereBox']
 
 export const CHUNK = {
   angularVelocity: [
@@ -70,11 +68,10 @@ export const CHUNK = {
 }
 
 export const GAME_STAGES = {
-  INIT: 'INIT',
-  MENU: 'MENU',
-  PLAY: 'PLAY',
-  WIN: 'WIN',
-  LOSE: 'LOSE',
-  PAUSE: 'PAUSE'
+  IntroGame: 'IntroGame',
+  SelectLevel: 'SelectLevel',
+  IntroLevel: 'IntroLevel',
+  PlayLevel: 'PlayLevel',
+  WinLevel: 'WinLevel'
 }
 

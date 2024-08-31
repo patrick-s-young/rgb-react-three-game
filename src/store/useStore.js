@@ -1,9 +1,10 @@
 import { create } from 'zustand'
-import { CONTAINER } from '../app.config'
+import { CONTAINER, GAME_STAGES, LEVEL_ORDER } from '../app.config'
 import { getShapeProps } from './useStore.helpers'
 
 const useStore = create(
   (set) => ({
+    gameStage: GAME_STAGES.IntroLevel,
     // container
     containerDepth: CONTAINER.depth,
     containerHeight: undefined,
@@ -13,13 +14,15 @@ const useStore = create(
     explosions: {},
     // shapes
     shapes: [],
+    shapesBoxHeight: 0,
     shapeId: 2,
-    shapeLevel: 'boxes',
+    levelIndex: 0,
+    setShapesBoxHeight: (boxHeight) => set({ shapesBoxHeight: boxHeight }),
     spawnShape: ({x, y}) => {
       set((state) => {
         const _shapeId = state.shapeId + 1
         const _shapeProps = getShapeProps({ 
-          shapeLevel: state.shapeLevel, 
+          shapeLevel: LEVEL_ORDER[state.levelIndex], 
           shapeId: _shapeId,
           dropPosition: [x, y, 0] })
         return { shapes: [...state.shapes, _shapeProps], shapeId: _shapeId}
@@ -53,7 +56,17 @@ const useStore = create(
     setScreen: ({ width, height, orientation }) => set((state) => ({ 
       containerHeight: height / width * state.containerWidth,
       orientation,
-    }))
+    })),
+    setGameStage: (gameStage) => {
+      if (gameStage === GAME_STAGES.IntroLevel) {
+        set((state) => {
+          let _levelIndex = state.levelIndex + 1
+          _levelIndex = (_levelIndex + LEVEL_ORDER.length) % LEVEL_ORDER.length
+          return { levelIndex: _levelIndex }
+        })
+      }
+      set({ gameStage })
+    }
   })
 )
 
