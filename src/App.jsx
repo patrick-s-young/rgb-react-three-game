@@ -42,9 +42,9 @@ function App() {
         <CameraControls makeDefault ref={controlsRef} />
         <hemisphereLight args={[0x606060, 0x404040]} />
         <directionalLight position={[1, 1, 1]}/>
-        <GameStages/>
         <Physics defaultContactMaterial={{ friction: 0.1, restitution: 0.5 }} gravity={[0, -19, 0]}>
           <Debug scale={1} color='green'>
+            <GameStages/>
             <ShapeController/>
             <ExplosionController/>
             <Container ref={boxRef}/>

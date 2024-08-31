@@ -1,8 +1,8 @@
-import IntroGame from './IntroGame'
-import SelectLevel from './SelectLevel'
-import IntroLevel from './IntroLevel'
-import PlayLevel from './PlayLevel'
-import WinLevel from './WinLevel'
+import IntroGame from './IntroGame/IntroGame'
+import SelectLevel from './SelectLevel/SelectLevel'
+import IntroLevel from './IntroLevel/IntroLevel'
+import PlayLevel from './PlayLevel/PlayLevel'
+import WinLevel from './WinLevel/WinLevel'
 
 
 const GameStages = () => {

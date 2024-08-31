@@ -4,7 +4,7 @@ import { getShapeProps } from './useStore.helpers'
 
 const useStore = create(
   (set) => ({
-    gameStage: GAME_STAGES.IntroLevel,
+    gameStage: GAME_STAGES.IntroGame,
     // container
     containerDepth: CONTAINER.depth,
     containerHeight: undefined,
