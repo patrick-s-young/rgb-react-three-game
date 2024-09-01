@@ -1,6 +1,6 @@
-import useStore from '../../store/useStore'
+import useStore from '../../../store/useStore'
 import { useEffect } from 'react'
-import { GAME_STAGES } from '../../app.config'
+import { GAME_STAGES } from '../../../app.config'
 
 const PlayLevel = () => {
   const { gameStage, setGameStage, containerHeight, shapesBoxHeight } = useStore((state) => state)
@@ -12,7 +12,7 @@ const PlayLevel = () => {
       return
     }
 
-    if (shapesBoxHeight > containerHeight) {
+    if (shapesBoxHeight > containerHeight ) {
       setGameStage(GAME_STAGES.WinLevel)
     }
 
