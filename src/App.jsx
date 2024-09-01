@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Physics, Debug } from '@react-three/cannon'
 import {   
@@ -8,48 +8,44 @@ import {
   GameStages,
   ScreenSettings,
   ShapeController } from './components'
-import { CameraControls } from '@react-three/drei';
-import { Box3 } from "three";
+import { SpotLight } from "three";
+import useStore from './store/useStore'
 import './App.css'
 
 function App() {
-  const controlsRef = useRef(null);
+  const _spotLight = useMemo(() => new SpotLight('#fff'), []);
+  const { containerWidth, containerHeight } = useStore((state) => state)
   const boxRef = useRef(null)
+  const _aspect = containerWidth/containerHeight
+  const _position = [0, containerHeight * .53, 43]
+  const _spotLightPosition = [0, 0, 5]
+  const _spotLightTarget = [0, containerHeight * .49, 0]
 
-  const fitToBox = () => {
-    const controls = controlsRef.current;
-    const mesh = boxRef.current;
-    if (!controls || !mesh) {
-      return;
-    }
-    const box3 = new Box3().setFromObject(mesh);
-    controls.fitToBox(box3, true, {
-      paddingTop: 0,
-      paddingBottom: 0,
-      paddingLeft: 0,
-      paddingRight: 0
-    });
-  };
-
-  useEffect(() => {
-    setTimeout(fitToBox, 250)
-  }, [])
 
   return (
     <div className='App'>
       <ScreenSettings />
-      <Canvas camera={{ fov: 5 }}>
-        <CameraControls makeDefault ref={controlsRef} />
-        <hemisphereLight args={[0x606060, 0x404040]} />
-        <directionalLight position={[1, 1, 1]}/>
+      <Canvas camera={{ position: _position, rotation: [0, 0, 0],  aspect: _aspect, fov: 30 }}>
+        <color attach="background" args={["black"]} />
+
+        <hemisphereLight args={[0xffffff, 0xffffff]} />
+        <directionalLight position={_position}/>
+        <primitive
+          object={_spotLight}
+          position={_spotLightPosition}
+          intensity={18.5}
+          penumbra={0.5}
+        />
+        <primitive object={_spotLight.target} position={_spotLightTarget} />
+
         <Physics defaultContactMaterial={{ friction: 0.1, restitution: 0.5 }} gravity={[0, -19, 0]}>
-          <Debug scale={1} color='green'>
+          {/* <Debug scale={1} color='green'> */}
             <GameStages/>
             <ShapeController/>
             <ExplosionController/>
             <Container ref={boxRef}/>
             <ChunkContainer/>
-          </Debug>
+          {/* </Debug> */}
         </Physics>
       </Canvas>
     </div>

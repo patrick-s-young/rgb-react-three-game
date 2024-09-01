@@ -19,7 +19,7 @@ export const CONTAINER = {
 }
 
 export const SHAPE = {
-  colors: ['#ff0000', '#00ff00', '#0000ff'],
+  colors: ['#ff0000', '#00ff00', '#3381ff'],
   widthHeight: SHAPE_WIDTH_HEIGHT,
   levels: {
     'spheres': ['sphere', 'sphere', 'sphere'],
@@ -60,10 +60,10 @@ export const CHUNK = {
   }, 
   mass: 1,
   velocity: [
-    [-2.5, 10, 5],
-    [2.5, 10, 5],
-    [2.5, 5, 5],
-    [-2.5, 5, 5]
+    [-2.5, 15, 19],
+    [2.5, 16, 20],
+    [2.5, 5, 9],
+    [-2.5, 5, 10]
   ],
 }
 

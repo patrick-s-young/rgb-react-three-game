@@ -4,7 +4,7 @@ import { getShapeProps } from './useStore.helpers'
 
 const useStore = create(
   (set) => ({
-    gameStage: GAME_STAGES.IntroGame,
+    gameStage: GAME_STAGES.IntroLevel,
     // container
     containerDepth: CONTAINER.depth,
     containerHeight: undefined,
@@ -16,7 +16,7 @@ const useStore = create(
     shapes: [],
     shapesBoxHeight: 0,
     shapeId: 2,
-    levelIndex: 0,
+    levelIndex: 1,
     setShapesBoxHeight: (boxHeight) => set({ shapesBoxHeight: boxHeight }),
     spawnShape: ({x, y}) => {
       set((state) => {
