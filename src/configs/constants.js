@@ -1,9 +1,13 @@
-
-
 export const CONTAINER_WIDTH = 10
 export const SHAPE_WIDTH_HEIGHT = CONTAINER_WIDTH * .33 * 0.9
 const CHUNK_WIDTH_HEIGHT = SHAPE_WIDTH_HEIGHT * 0.5
 const CHUNK_START_POSITION_OFFSET = CHUNK_WIDTH_HEIGHT * 0.5
+
+export const COLORS = {
+  red: '#ff0000',
+  green: '#00ff00',
+  blue: '#3381ff'
+}
 
 export const COLLISION_GROUPS = {
   CONTAINER: 2 ** 0,
@@ -19,7 +23,7 @@ export const CONTAINER = {
 }
 
 export const SHAPE = {
-  colors: ['#ff0000', '#00ff00', '#3381ff'],
+  colors: [COLORS.red, COLORS.green, COLORS.blue],
   widthHeight: SHAPE_WIDTH_HEIGHT,
   levels: {
     'spheres': ['sphere', 'sphere', 'sphere'],
@@ -33,7 +37,7 @@ export const SHAPE = {
   }
 }
 
-export const LEVEL_ORDER = ['spheres', 'boxes', 'sphereBoxSphere', 'boxSphereBox']
+export const LEVEL_ORDER = ['spheres', 'boxSphereBox', 'boxes', 'sphereBoxSphere']
 
 export const CHUNK = {
   angularVelocity: [

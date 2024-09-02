@@ -1,38 +1,31 @@
 import { useEffect, useState } from 'react'
 import useStore from '../../../store/useStore'
-import LetterBox from './LetterBox'
-import { GAME_STAGES, SHAPE_WIDTH_HEIGHT } from '../../../app.config'
+import CreatePuppet from './CreatePuppet'
+import { GAME_STAGES } from '../../../configs/constants'
+import { INTRO_PUPPETS } from './introGame.configs'
 
-const boxSize = new Array(3).fill(SHAPE_WIDTH_HEIGHT)
-const LETTER_PROPS = [
-  { character: 'R', color: '#ff0000', size: boxSize, offsetX: .4},
-  { character: 'G', color: '#00ff00', size: boxSize, offsetX: 0 },
-  { character: 'B', color: '#0000ff', size: boxSize, offsetX: 0 }
-]
 
 const IntroGame = () => {
-  const { gameStage, setGameStage, containerHeight } = useStore((state) => state)
-  const [letters, setLetters] = useState([])
+  const { gameStage, setGameStage } = useStore((state) => state)
+  const [puppets, setPuppets] = useState([])
 
   useEffect(() => {
     if (gameStage !== GAME_STAGES.IntroGame) {
       return 
     }
-    let letterCount = 3
-    const xOffsetIncrement = SHAPE_WIDTH_HEIGHT * 1.05
-    const startX = -xOffsetIncrement
-    const spawnIntroLetter = () => {
-      const offsetX = startX + (3 - letterCount) * xOffsetIncrement
-      const _letterProps = LETTER_PROPS[3 - letterCount]
-      _letterProps.position = [offsetX, containerHeight - SHAPE_WIDTH_HEIGHT, 0]
-  
-      setLetters(letters => [...letters, _letterProps])
-      letterCount -= 1;
-      if (!letterCount) {
+
+    let intervalId
+    let _puppetCount = 0
+    const _puppetMax = INTRO_PUPPETS.length
+    const spawnPuppet = () => {
+      const _newPuppet = INTRO_PUPPETS[_puppetCount]
+      setPuppets(puppets => [...puppets, _newPuppet])
+      _puppetCount += 1;
+      if (_puppetCount === _puppetMax) {
         clearInterval(intervalId)
       }
     }
-    const intervalId = setInterval(spawnIntroLetter, 500)
+    intervalId = setInterval(spawnPuppet, 250)
     return () => clearInterval(intervalId)
   }, [])
 
@@ -47,15 +40,14 @@ const IntroGame = () => {
 
 
   return (
-    <>
-      {letters.map(item => 
-        <LetterBox
-          {...item}
-          key={item.color}
-          onClick={handleOnClick}
-        />
-      )}
-    </>
+    <group onClick={handleOnClick}>
+      { puppets.length && puppets.map(({ type, props, key }) => CreatePuppet({
+          type, 
+          props: {...props},
+          key
+        }))
+      }
+    </group>
   )
 }
 

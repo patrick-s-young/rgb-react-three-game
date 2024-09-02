@@ -1,4 +1,4 @@
-import { SHAPE } from '../app.config'
+import { SHAPE } from '../configs/constants'
 
 export const getShapeProps = ({
   shapeLevel,

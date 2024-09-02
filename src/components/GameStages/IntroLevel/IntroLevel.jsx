@@ -1,5 +1,5 @@
 import useStore from '../../../store/useStore'
-import { GAME_STAGES, SHAPE_WIDTH_HEIGHT, CONTAINER_WIDTH } from '../../../app.config'
+import { GAME_STAGES, SHAPE_WIDTH_HEIGHT } from '../../../configs/constants'
 import { useEffect } from 'react'
 
 

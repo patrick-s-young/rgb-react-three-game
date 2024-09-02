@@ -1,13 +1,15 @@
-import Container from './Container/Container'
+import ChunkContainer from './ChunkContainer/ChunkContainer'
+import ContactMaterials from './ContactMaterials/ContactMaterials'
+import ShapeContainer from './ShapeContainer/ShapeContainer'
 import ExplosionController from './ExplosionController/ExplosionController'
 import GameStages from './GameStages/GameStages'
 import ScreenSettings from './ScreenSettings/ScreenSettings'
 import ShapeController from './ShapeController/ShapeController'
-import ChunkContainer from './ChunkContainer/ChunkContainer'
 
 export {
   ChunkContainer,
-  Container,
+  ContactMaterials,
+  ShapeContainer,
   ExplosionController,
   GameStages,
   ScreenSettings,

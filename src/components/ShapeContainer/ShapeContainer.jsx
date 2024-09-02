@@ -1,11 +1,11 @@
 import useStore from '../../store/useStore'
-import ContainerWall from './ContainerWall'
-import { GAME_STAGES } from '../../app.config'
+import ShapeContainerWall from './ShapeContainerWall'
+import { GAME_STAGES } from '../../configs/constants'
 import { getContainerProps } from './container.helpers';
 import { forwardRef } from 'react';
 
 
-const Container = forwardRef((props, ref) => {
+const ShapeContainer = forwardRef((props, ref) => {
   const { spawnShape, containerWidth, containerHeight,  containerDepth, containerThickness, gameStage } = useStore((state) => state)
   const _containerProps = getContainerProps({
     containerWidth, 
@@ -26,7 +26,7 @@ const Container = forwardRef((props, ref) => {
       {Object.keys(_containerProps).map((name) => {
         const { size, position } = _containerProps[name]
         return (
-          <ContainerWall
+          <ShapeContainerWall
             size={size}
             position={position}
             key={name}
@@ -40,4 +40,4 @@ const Container = forwardRef((props, ref) => {
   )
 })
 
-export default Container
+export default ShapeContainer

@@ -2,25 +2,29 @@
 import { useRef } from "react";
 import { useBox } from '@react-three/cannon';
 import { Text3D } from '@react-three/drei'
-import { COLLISION_GROUPS } from '../../../app.config'
+import { COLLISION_GROUPS } from '../../../configs/constants'
+import { CONTACT_MATERIALS } from "../../../configs/contactMaterials";
 
 
-const LetterBox = ({ 
+const PuppetLetter = ({ 
   character, 
   color,
   size,
   offsetX,
   onClick,
   position }) => {
-  const _letterSize = size[0] * 1.05
+  const _letterSize = size[0] * .95
   const _letterPosition = [-_letterSize * 0.5 + offsetX, -_letterSize * 0.5, 0]
 
   const [ref, api] = useBox(() => ({
+    args: size,
     collisionFilterGroup: COLLISION_GROUPS.SHAPE,
     collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
-    args: size,
-    position,
-    mass: 1
+    linearFactor: [0, 1, 0],
+    angularFactor: [0, 0, 0],
+    mass: 1, 
+    material: CONTACT_MATERIALS.SHAPE,
+    position
   }), useRef(null));
 
 
@@ -47,4 +51,4 @@ const LetterBox = ({
   )
 }
 
-export default LetterBox
+export default PuppetLetter

@@ -1,5 +1,5 @@
 import useStore from '../../../store/useStore'
-import { GAME_STAGES } from '../../../app.config'
+import { GAME_STAGES } from '../../../configs/constants'
 import { useEffect } from 'react'
 
 const WinLevel = () => {
