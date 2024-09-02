@@ -1,13 +1,15 @@
-import { COLLISION_GROUPS } from '../../app.config';
+import { COLLISION_GROUPS } from '../../configs/constants';
+import { CONTACT_MATERIALS } from '../../configs/contactMaterials';
 import { useBox } from '@react-three/cannon'
 
-const ContainerWall = ({
+const ShapeContainerWall = ({
   size,
   position,
   name,
   onClick }) => {
 
   const [ref] = useBox(() => ({
+    material: CONTACT_MATERIALS.CONTAINER,
     collisionFilterGroup: COLLISION_GROUPS.CONTAINER,
     collisionFilterMask: COLLISION_GROUPS.SHAPE | COLLISION_GROUPS.CONTAINER,
     args: size,
@@ -23,4 +25,4 @@ const ContainerWall = ({
   )
 }
 
-export default ContainerWall
+export default ShapeContainerWall

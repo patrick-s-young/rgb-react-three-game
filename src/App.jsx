@@ -1,21 +1,21 @@
-import { useRef, useMemo } from 'react'
+import { useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Physics, Debug } from '@react-three/cannon'
 import {   
   ChunkContainer,
-  Container,
+  ContactMaterials,
+  ShapeContainer,
   ExplosionController,
   GameStages,
   ScreenSettings,
   ShapeController } from './components'
 import { SpotLight } from "three";
-import useStore from './store/useStore'
+import useStore from './store/useStore';
 import './App.css'
 
 function App() {
   const _spotLight = useMemo(() => new SpotLight('#fff'), []);
   const { containerWidth, containerHeight } = useStore((state) => state)
-  const boxRef = useRef(null)
   const _aspect = containerWidth/containerHeight
   const _position = [0, containerHeight * .53, 43]
   const _spotLightPosition = [0, 0, 5]
@@ -40,10 +40,11 @@ function App() {
 
         <Physics defaultContactMaterial={{ friction: 0.1, restitution: 0.5 }} gravity={[0, -19, 0]}>
           {/* <Debug scale={1} color='green'> */}
+            <ContactMaterials/>
             <GameStages/>
             <ShapeController/>
             <ExplosionController/>
-            <Container ref={boxRef}/>
+            <ShapeContainer/>
             <ChunkContainer/>
           {/* </Debug> */}
         </Physics>

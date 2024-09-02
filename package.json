@@ -21,6 +21,7 @@
     "three": "^0.167.1",
     "three-effectcomposer": "^0.0.1",
     "three-stdlib": "^2.32.2",
+    "uuid": "^10.0.0",
     "zustand": "^4.5.4"
   },
   "devDependencies": {

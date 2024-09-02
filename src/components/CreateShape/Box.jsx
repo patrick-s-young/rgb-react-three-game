@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useBox } from '@react-three/cannon';
-import { COLLISION_GROUPS } from '../../app.config';
+import { CONTACT_MATERIALS } from '../../configs/contactMaterials';
+import { COLLISION_GROUPS } from '../../configs/constants';
 
 const Box = ({
   color, 
@@ -10,6 +11,7 @@ const Box = ({
   size }) => {
   const _positionRef = useRef([0, 50, 0])
   const [ref, api] = useBox(() => ({
+    material: CONTACT_MATERIALS.SHAPE,
     collisionFilterGroup: COLLISION_GROUPS.SHAPE,
     collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
     args: size,

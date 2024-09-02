@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useSphere } from '@react-three/cannon';
+import { CONTACT_MATERIALS } from '../../configs/contactMaterials';
+import { COLLISION_GROUPS } from '../../configs/constants';
 
 const Sphere = ({
   radius,
@@ -9,6 +11,9 @@ const Sphere = ({
   name }) => {
   const _positionRef = useRef([0, 50, 0])
   const [ref, api] = useSphere(() => ({
+    material: CONTACT_MATERIALS.SHAPE,
+    collisionFilterGroup: COLLISION_GROUPS.SHAPE,
+    collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
     args: radius,
     position: [...dropPosition],
     mass: 1,

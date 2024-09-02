@@ -1,10 +1,10 @@
 import { create } from 'zustand'
-import { CONTAINER, GAME_STAGES, LEVEL_ORDER } from '../app.config'
+import { CONTAINER, GAME_STAGES, LEVEL_ORDER } from '../configs/constants'
 import { getShapeProps } from './useStore.helpers'
 
 const useStore = create(
   (set) => ({
-    gameStage: GAME_STAGES.IntroLevel,
+    gameStage: GAME_STAGES.IntroGame,
     // container
     containerDepth: CONTAINER.depth,
     containerHeight: undefined,
@@ -16,7 +16,7 @@ const useStore = create(
     shapes: [],
     shapesBoxHeight: 0,
     shapeId: 2,
-    levelIndex: 1,
+    levelIndex: -1,
     setShapesBoxHeight: (boxHeight) => set({ shapesBoxHeight: boxHeight }),
     spawnShape: ({x, y}) => {
       set((state) => {
