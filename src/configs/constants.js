@@ -1,5 +1,12 @@
+import * as THREE from 'three'
+
+const octQuaternion_rotateX = new THREE.Quaternion().setFromAxisAngle( new THREE.Vector3( 1, 0, 0 ), Math.PI / 2)
+const octQuaternion_rotateY = new THREE.Quaternion().setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), Math.PI / 8)
+export const OCT_QUATERNION = new THREE.Quaternion().multiplyQuaternions(octQuaternion_rotateX, octQuaternion_rotateY).toArray()
+
 export const CONTAINER_WIDTH = 10
 export const SHAPE_WIDTH_HEIGHT = CONTAINER_WIDTH * .33 * 0.9
+export const OCTAGON_RADIUS = SHAPE_WIDTH_HEIGHT * 0.54
 const CHUNK_WIDTH_HEIGHT = SHAPE_WIDTH_HEIGHT * 0.5
 const CHUNK_START_POSITION_OFFSET = CHUNK_WIDTH_HEIGHT * 0.5
 
@@ -26,18 +33,21 @@ export const SHAPE = {
   colors: [COLORS.red, COLORS.green, COLORS.blue],
   widthHeight: SHAPE_WIDTH_HEIGHT,
   levels: {
+    'octagons': ['octagon', 'octagon', 'octagon'],
+    'octBoxSphere': ['octagon', 'box', 'sphere'],
     'spheres': ['sphere', 'sphere', 'sphere'],
     'boxes': ['box', 'box', 'box'],
     'sphereBoxSphere': ['sphere', 'box', 'sphere'],
     'boxSphereBox': ['box', 'sphere', 'box']
   },
   geometryArgs: {
-    'sphere': { radius: [SHAPE_WIDTH_HEIGHT * .5]},
-    'box': { size: [SHAPE_WIDTH_HEIGHT, SHAPE_WIDTH_HEIGHT, SHAPE_WIDTH_HEIGHT]}
+    'sphere': { args: [SHAPE_WIDTH_HEIGHT * .5]},
+    'box': { args: [SHAPE_WIDTH_HEIGHT, SHAPE_WIDTH_HEIGHT, SHAPE_WIDTH_HEIGHT]},
+    'octagon': { args: [SHAPE_WIDTH_HEIGHT * .5, SHAPE_WIDTH_HEIGHT * .5, SHAPE_WIDTH_HEIGHT, 8]}
   }
 }
 
-export const LEVEL_ORDER = ['spheres', 'boxSphereBox', 'boxes', 'sphereBoxSphere']
+export const LEVEL_ORDER = ['octagons', 'octBoxSphere', 'boxes', 'spheres', 'boxSphereBox', 'sphereBoxSphere']
 
 export const CHUNK = {
   angularVelocity: [

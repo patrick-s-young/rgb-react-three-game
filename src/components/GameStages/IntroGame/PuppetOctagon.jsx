@@ -1,14 +1,15 @@
 import { useRef } from "react";
-import { useBox } from '@react-three/cannon';
-import { COLLISION_GROUPS } from '../../../configs/constants'
+import { useCylinder } from '@react-three/cannon';
+import { COLLISION_GROUPS, OCT_QUATERNION } from '../../../configs/constants'
 import { CONTACT_MATERIALS } from "../../../configs/contactMaterials";
 
-const PuppetBox = ({
+
+const PuppetOctagon = ({
   color, 
   position,
   args }) => {
 
-  const [ref, api] = useBox(() => ({
+  const [ref, api] = useCylinder(() => ({
     args,
     collisionFilterGroup: COLLISION_GROUPS.SHAPE,
     collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
@@ -16,16 +17,17 @@ const PuppetBox = ({
     angularFactor: [0, 0, 0],
     mass: 1,
     material: CONTACT_MATERIALS.SHAPE,
-    position
+    position,
+    quaternion: OCT_QUATERNION
   }), useRef(null));
 
 
   return (
     <mesh ref={ref}>
-      <boxGeometry args={args}/>
+      <cylinderGeometry args={args}/>
       <meshStandardMaterial color={color} />
     </mesh>
   )
 }
 
-export default PuppetBox
+export default PuppetOctagon

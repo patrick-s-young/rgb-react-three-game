@@ -24,7 +24,7 @@ const useStore = create(
         const _shapeProps = getShapeProps({ 
           shapeLevel: LEVEL_ORDER[state.levelIndex], 
           shapeId: _shapeId,
-          dropPosition: [x, y, 0] })
+          position: [x, y, 0] })
         return { shapes: [...state.shapes, _shapeProps], shapeId: _shapeId}
       })
     },

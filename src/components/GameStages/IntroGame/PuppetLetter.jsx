@@ -9,15 +9,15 @@ import { CONTACT_MATERIALS } from "../../../configs/contactMaterials";
 const PuppetLetter = ({ 
   character, 
   color,
-  size,
+  args,
   offsetX,
   onClick,
   position }) => {
-  const _letterSize = size[0] * .95
+  const _letterSize = args[0] * .95
   const _letterPosition = [-_letterSize * 0.5 + offsetX, -_letterSize * 0.5, 0]
 
   const [ref, api] = useBox(() => ({
-    args: size,
+    args,
     collisionFilterGroup: COLLISION_GROUPS.SHAPE,
     collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
     linearFactor: [0, 1, 0],

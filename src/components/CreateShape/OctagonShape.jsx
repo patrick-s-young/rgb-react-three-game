@@ -1,22 +1,24 @@
 import { useRef, useEffect } from "react";
-import { useBox } from '@react-three/cannon';
+import { useCylinder } from '@react-three/cannon';
 import { CONTACT_MATERIALS } from '../../configs/contactMaterials';
-import { COLLISION_GROUPS } from '../../configs/constants';
+import { COLLISION_GROUPS, OCT_QUATERNION } from '../../configs/constants';
 
-const Box = ({
+
+const OctagonShape = ({
+  args,
+  position,
   color, 
-  dropPosition,
   handleRemoveShape,
-  name,
-  size }) => {
+  name }) => {
   const _positionRef = useRef([0, 50, 0])
-  const [ref, api] = useBox(() => ({
+  const [ref, api] = useCylinder(() => ({
     material: CONTACT_MATERIALS.SHAPE,
     collisionFilterGroup: COLLISION_GROUPS.SHAPE,
     collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
-    args: size,
-    position: [...dropPosition],
+    args,
+    position,
     mass: 1,
+    quaternion: OCT_QUATERNION,
     onCollide: handleOnCollide
   }), useRef(null));
 
@@ -38,10 +40,10 @@ const Box = ({
 
   return (
     <mesh ref={ref} name={name} color={color} isShape={true}>
-      <boxGeometry args={size}/>
+      <cylinderGeometry args={args}/>
       <meshStandardMaterial color={color} />
     </mesh>
   )
 }
 
-export default Box
+export default OctagonShape
