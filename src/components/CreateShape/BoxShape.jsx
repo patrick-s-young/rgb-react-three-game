@@ -1,21 +1,21 @@
 import { useRef, useEffect } from "react";
-import { useSphere } from '@react-three/cannon';
+import { useBox } from '@react-three/cannon';
 import { CONTACT_MATERIALS } from '../../configs/contactMaterials';
 import { COLLISION_GROUPS } from '../../configs/constants';
 
-const Sphere = ({
-  radius,
-  dropPosition,
+const BoxShape = ({
   color, 
+  position,
   handleRemoveShape,
-  name }) => {
+  name,
+  args }) => {
   const _positionRef = useRef([0, 50, 0])
-  const [ref, api] = useSphere(() => ({
+  const [ref, api] = useBox(() => ({
     material: CONTACT_MATERIALS.SHAPE,
     collisionFilterGroup: COLLISION_GROUPS.SHAPE,
     collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
-    args: radius,
-    position: [...dropPosition],
+    args,
+    position,
     mass: 1,
     onCollide: handleOnCollide
   }), useRef(null));
@@ -26,7 +26,7 @@ const Sphere = ({
         name: e.target.name, 
         position: _positionRef.current,
         color: e.target.color,
-        chunkType: 'sphereChunk'
+        chunkType: 'boxChunk'
       }) 
     }
   }
@@ -38,10 +38,10 @@ const Sphere = ({
 
   return (
     <mesh ref={ref} name={name} color={color} isShape={true}>
-      <sphereGeometry args={radius}/>
+      <boxGeometry args={args}/>
       <meshStandardMaterial color={color} />
     </mesh>
   )
 }
 
-export default Sphere
+export default BoxShape

@@ -6,10 +6,10 @@ import { CONTACT_MATERIALS } from "../../../configs/contactMaterials";
 const PuppetSphere = ({
   color, 
   position,
-  radius }) => {
+  args }) => {
 
   const [ref, api] = useSphere(() => ({
-    args: radius,
+    args,
     collisionFilterGroup: COLLISION_GROUPS.SHAPE,
     collisionFilterMask: COLLISION_GROUPS.CONTAINER | COLLISION_GROUPS.SHAPE,
     linearFactor: [0, 1, 0],
@@ -22,7 +22,7 @@ const PuppetSphere = ({
 
   return (
     <mesh ref={ref}>
-      <sphereGeometry args={radius}/>
+      <sphereGeometry args={args}/>
       <meshStandardMaterial color={color} />
     </mesh>
   )

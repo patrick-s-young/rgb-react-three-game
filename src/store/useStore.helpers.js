@@ -3,7 +3,7 @@ import { SHAPE } from '../configs/constants'
 export const getShapeProps = ({
   shapeLevel,
   shapeId,
-  dropPosition
+  position
  }) => {
   const _shapeIndex = shapeId % 3
   const _shapeType = (SHAPE.levels[shapeLevel])[_shapeIndex]
@@ -13,7 +13,7 @@ export const getShapeProps = ({
       ...SHAPE.geometryArgs[_shapeType],
       color: SHAPE.colors[_shapeIndex],
       name: shapeId,
-      dropPosition
+      position
     },
     key: shapeId,
   }
