@@ -4,7 +4,7 @@ import { CONTACT_MATERIALS, COLLISION_GROUPS } from '../../configs/physics';
 import { CYLINDER_QUATERNION } from '../../configs/shape';
 
 
-const OctagonShape = ({
+const CircleShape = ({
   args,
   position,
   color, 
@@ -30,7 +30,7 @@ const OctagonShape = ({
         name: e.target.name, 
         position: _positionRef.current,
         color: e.target.color,
-        chunkType: 'octagonChunk'
+        chunkType: 'circleChunk'
       }) 
     }
   }
@@ -49,4 +49,4 @@ const OctagonShape = ({
   )
 }
 
-export default OctagonShape
+export default CircleShape

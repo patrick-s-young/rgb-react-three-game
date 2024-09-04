@@ -1,8 +1,15 @@
 import { COLLISION_GROUPS } from "./physics"
-import { SHAPE_WIDTH_HEIGHT } from "./shape"
+import { 
+  SHAPE_WIDTH_HEIGHT, 
+  CIRCLE_RADIUS, 
+  OCTAGON_RADIUS,
+  OCTAGON_RADIAL_SEGMENTS,
+  CIRCLE_RADIAL_SEGMENTS } from "./shape"
 
 const CHUNK_WIDTH_HEIGHT = SHAPE_WIDTH_HEIGHT * 0.5
 const CHUNK_START_POSITION_OFFSET = CHUNK_WIDTH_HEIGHT * 0.5
+const CHUNK_CIRCLE_RADIUS = CIRCLE_RADIUS * 0.5
+const CHUNK_OCTAGON_RADIUS = OCTAGON_RADIUS * 0.5
 
 export const CHUNK = {
   angularVelocity: [
@@ -14,9 +21,10 @@ export const CHUNK = {
   collisionFilterGroup: COLLISION_GROUPS.CHUNK,
   collisionFilterMask: COLLISION_GROUPS.CHUNK | COLLISION_GROUPS.CHUNK_CONTAINER,
   args: {
-    'sphereChunk': [CHUNK_WIDTH_HEIGHT * .25],
+    'sphereChunk': [CHUNK_CIRCLE_RADIUS],
     'boxChunk': [CHUNK_WIDTH_HEIGHT, CHUNK_WIDTH_HEIGHT, CHUNK_WIDTH_HEIGHT],
-    'octagonChunk': [CHUNK_WIDTH_HEIGHT * .5, CHUNK_WIDTH_HEIGHT * .5, CHUNK_WIDTH_HEIGHT, 8]
+    'octagonChunk': [CHUNK_OCTAGON_RADIUS, CHUNK_OCTAGON_RADIUS, CHUNK_WIDTH_HEIGHT, OCTAGON_RADIAL_SEGMENTS],
+    'cicleChunk': [CHUNK_CIRCLE_RADIUS, CHUNK_CIRCLE_RADIUS, CHUNK_WIDTH_HEIGHT, CIRCLE_RADIAL_SEGMENTS]
   },
   position: ({ startPosition, chunkIndex }) => {
     const [ x, y, z ] = startPosition

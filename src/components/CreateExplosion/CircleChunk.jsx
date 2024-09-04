@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useBox } from '@react-three/cannon';
 import { CYLINDER_QUATERNION } from '../../configs/shape'
 
-const OctagonChunk = ({
+const CircleChunk = ({
   angularVelocity,
   args,
   collisionFilterGroup, 
@@ -50,4 +50,4 @@ const OctagonChunk = ({
   )
 }
 
-export default OctagonChunk
+export default CircleChunk

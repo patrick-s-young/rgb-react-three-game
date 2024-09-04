@@ -1,5 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
-import { SHAPE_WIDTH_HEIGHT, OCTAGON_RADIUS } from '../../../configs/shape'
+import { 
+  SHAPE_WIDTH_HEIGHT, 
+  OCTAGON_RADIUS, 
+  CIRCLE_RADIUS, 
+  OCTAGON_RADIAL_SEGMENTS,
+  CIRCLE_RADIAL_SEGMENTS } from '../../../configs/shape'
 import { COLORS } from '../../../configs/game'
 
 const halfSpace = SHAPE_WIDTH_HEIGHT * 0.5
@@ -8,7 +13,8 @@ const yMin = 2.5 * SHAPE_WIDTH_HEIGHT
 const ARGS = {
   box: new Array(3).fill(SHAPE_WIDTH_HEIGHT),
   sphere: [SHAPE_WIDTH_HEIGHT * 0.5],
-  octagon: [OCTAGON_RADIUS, OCTAGON_RADIUS, SHAPE_WIDTH_HEIGHT, 8]
+  octagon: [OCTAGON_RADIUS, OCTAGON_RADIUS, SHAPE_WIDTH_HEIGHT, OCTAGON_RADIAL_SEGMENTS],
+  circle: [CIRCLE_RADIUS, CIRCLE_RADIUS, SHAPE_WIDTH_HEIGHT, CIRCLE_RADIAL_SEGMENTS]
 }
 const GRID = {
   col: { 
@@ -31,8 +37,8 @@ const GRID = {
 
 export const INTRO_PUPPETS = [
   // wave 1
-  { type: 'puppetOctagon',
-    props: { color: COLORS.red, args: ARGS.octagon, position: [GRID.col._1, GRID.row._3, 0]},
+  { type: 'puppetCircle',
+    props: { color: COLORS.red, args: ARGS.circle, position: [GRID.col._1, GRID.row._3, 0]},
     key: uuidv4()
   },
   { type: 'puppetBox',
@@ -49,8 +55,8 @@ export const INTRO_PUPPETS = [
     props: { color: COLORS.red, args: ARGS.box, position: [GRID.col._2, GRID.row._4, 0]},
     key: uuidv4()
   },
-  { type: 'puppetSphere',
-    props: { color: COLORS.green, args: ARGS.sphere, position: [GRID.col._3, GRID.row._4, 0]},
+  { type: 'puppetCircle',
+    props: { color: COLORS.green, args: ARGS.circle, position: [GRID.col._3, GRID.row._4, 0]},
     key: uuidv4()
   },
   { type: 'puppetBox',
@@ -81,8 +87,8 @@ export const INTRO_PUPPETS = [
     props: { color: COLORS.green, args: ARGS.box,  position: [GRID.col._1, GRID.row._6, 0]},
     key: uuidv4()
   },
-  { type: 'puppetSphere',
-    props: { color: COLORS.blue, args: ARGS.sphere, position: [GRID.col._2, GRID.row._6, 0]},
+  { type: 'puppetCircle',
+    props: { color: COLORS.blue, args: ARGS.circle, position: [GRID.col._2, GRID.row._6, 0]},
     key: uuidv4()
   },
 
@@ -91,12 +97,12 @@ export const INTRO_PUPPETS = [
     props: { color: COLORS.red, args: ARGS.box, position: [GRID.col._2, GRID.row._8, 0]},
     key: uuidv4()
   },
-  { type: 'puppetSphere',
-    props: { color: COLORS.green, args: ARGS.sphere, position: [GRID.col._3, GRID.row._7 + halfSpace, 0]},
+  { type: 'puppetCircle',
+    props: { color: COLORS.green, args: ARGS.circle, position: [GRID.col._3, GRID.row._7 + halfSpace, 0]},
     key: uuidv4()
   },
-  { type: 'puppetSphere',
-    props: { color: COLORS.blue, args: ARGS.sphere, position: [GRID.col._1, GRID.row._7 + halfSpace, 0]},
+  { type: 'puppetOctagon',
+    props: { color: COLORS.blue, args: ARGS.octagon, position: [GRID.col._1, GRID.row._7 + halfSpace, 0]},
     key: uuidv4()
   },
 
@@ -115,16 +121,16 @@ export const INTRO_PUPPETS = [
   },
 
   // wave 7
-  { type: 'puppetBox',
-    props: { color: COLORS.red, args: ARGS.box,  position: [GRID.col._3, GRID.row._9, 0]},
+  { type: 'puppetOctagon',
+    props: { color: COLORS.red, args: ARGS.octagon,  position: [GRID.col._3, GRID.row._9, 0]},
     key: uuidv4()
   },
   { type: 'puppetBox',
     props: { color: COLORS.green, args: ARGS.box,  position: [GRID.col._1, GRID.row._9, 0]},
     key: uuidv4()
   },
-  { type: 'puppetSphere',
-    props: { color: COLORS.blue, args: ARGS.sphere, position: [GRID.col._2, GRID.row._9, 0]},
+  { type: 'puppetCircle',
+    props: { color: COLORS.blue, args: ARGS.circle, position: [GRID.col._2, GRID.row._9, 0]},
     key: uuidv4()
   }
 ]

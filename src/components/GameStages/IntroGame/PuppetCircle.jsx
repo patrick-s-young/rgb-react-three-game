@@ -4,7 +4,7 @@ import { CYLINDER_QUATERNION } from '../../../configs/shape'
 import { CONTACT_MATERIALS, COLLISION_GROUPS } from "../../../configs/physics";
 
 
-const PuppetOctagon = ({
+const PuppetCircle = ({
   color, 
   position,
   args }) => {
@@ -30,4 +30,4 @@ const PuppetOctagon = ({
   )
 }
 
-export default PuppetOctagon
+export default PuppetCircle
