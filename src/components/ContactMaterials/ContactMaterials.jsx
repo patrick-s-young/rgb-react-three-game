@@ -1,4 +1,4 @@
-import { useContactMaterials } from "../../configs/contactMaterials"
+import { useContactMaterials } from "../../configs/physics"
 
 
 const ContactMaterials = () => {

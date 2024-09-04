@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useSphere } from '@react-three/cannon';
-import { COLLISION_GROUPS } from '../../../configs/constants'
-import { CONTACT_MATERIALS } from "../../../configs/contactMaterials";
+import { COLLISION_GROUPS, CONTACT_MATERIALS } from '../../../configs/physics';
+
 
 const PuppetSphere = ({
   color, 

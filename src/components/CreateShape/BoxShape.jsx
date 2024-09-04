@@ -1,7 +1,6 @@
 import { useRef, useEffect } from "react";
 import { useBox } from '@react-three/cannon';
-import { CONTACT_MATERIALS } from '../../configs/contactMaterials';
-import { COLLISION_GROUPS } from '../../configs/constants';
+import { CONTACT_MATERIALS, COLLISION_GROUPS } from '../../configs/physics';
 
 const BoxShape = ({
   color, 

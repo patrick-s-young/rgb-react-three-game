@@ -1,4 +1,4 @@
-import { CHUNK } from '../../configs/constants'
+import { CHUNK } from '../../configs/chunk'
 
 export const getChunkProps = ({
   chunkType,

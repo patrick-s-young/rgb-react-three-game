@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import useStore from '../../../store/useStore'
 import CreatePuppet from './CreatePuppet'
-import { GAME_STAGES } from '../../../configs/constants'
+import { GAME_STAGES } from '../../../configs/game'
 import { INTRO_PUPPETS } from './introGame.configs'
 
 
