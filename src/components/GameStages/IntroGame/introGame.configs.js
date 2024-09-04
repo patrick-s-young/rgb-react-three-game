@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { SHAPE_WIDTH_HEIGHT, COLORS, OCTAGON_RADIUS } from '../../../configs/constants'
-
+import { SHAPE_WIDTH_HEIGHT, OCTAGON_RADIUS } from '../../../configs/shape'
+import { COLORS } from '../../../configs/game'
 
 const halfSpace = SHAPE_WIDTH_HEIGHT * 0.5
 const xOffsetIncrement = SHAPE_WIDTH_HEIGHT * 1.03

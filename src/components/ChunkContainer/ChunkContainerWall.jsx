@@ -1,4 +1,4 @@
-import { COLLISION_GROUPS } from '../../configs/constants';
+import { COLLISION_GROUPS } from '../../configs/physics';
 import { useBox } from '@react-three/cannon'
 
 const ChunkContainerWall = ({

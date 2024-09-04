@@ -2,9 +2,7 @@
 import { useRef } from "react";
 import { useBox } from '@react-three/cannon';
 import { Text3D } from '@react-three/drei'
-import { COLLISION_GROUPS } from '../../../configs/constants'
-import { CONTACT_MATERIALS } from "../../../configs/contactMaterials";
-
+import { CONTACT_MATERIALS, COLLISION_GROUPS } from "../../../configs/physics";
 
 const PuppetLetter = ({ 
   character, 

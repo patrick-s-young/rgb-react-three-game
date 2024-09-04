@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { CONTAINER, GAME_STAGES, LEVEL_ORDER } from '../configs/constants'
+import { CONTAINER } from '../configs/container'
+import { GAME_STAGES, LEVEL_ORDER } from '../configs/game'
 import { getShapeProps } from './useStore.helpers'
 
 const useStore = create(

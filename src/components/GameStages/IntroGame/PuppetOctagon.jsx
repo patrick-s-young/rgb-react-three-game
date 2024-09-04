@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useCylinder } from '@react-three/cannon';
-import { COLLISION_GROUPS, OCT_QUATERNION } from '../../../configs/constants'
-import { CONTACT_MATERIALS } from "../../../configs/contactMaterials";
+import { OCT_QUATERNION } from '../../../configs/shape'
+import { CONTACT_MATERIALS, COLLISION_GROUPS } from "../../../configs/physics";
 
 
 const PuppetOctagon = ({

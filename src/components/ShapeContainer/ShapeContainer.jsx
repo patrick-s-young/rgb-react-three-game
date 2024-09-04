@@ -1,6 +1,6 @@
 import useStore from '../../store/useStore'
 import ShapeContainerWall from './ShapeContainerWall'
-import { GAME_STAGES } from '../../configs/constants'
+import { GAME_STAGES } from '../../configs/game'
 import { getContainerProps } from './container.helpers';
 import { forwardRef } from 'react';
 

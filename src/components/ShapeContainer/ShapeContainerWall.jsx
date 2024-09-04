@@ -1,5 +1,4 @@
-import { COLLISION_GROUPS } from '../../configs/constants';
-import { CONTACT_MATERIALS } from '../../configs/contactMaterials';
+import { COLLISION_GROUPS, CONTACT_MATERIALS } from '../../configs/physics';
 import { useBox } from '@react-three/cannon'
 
 const ShapeContainerWall = ({

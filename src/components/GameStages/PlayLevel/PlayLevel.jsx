@@ -1,6 +1,6 @@
 import useStore from '../../../store/useStore'
 import { useEffect } from 'react'
-import { GAME_STAGES } from '../../../configs/constants'
+import { GAME_STAGES } from '../../../configs/game'
 
 const PlayLevel = () => {
   const { gameStage, setGameStage, containerHeight, shapesBoxHeight } = useStore((state) => state)
