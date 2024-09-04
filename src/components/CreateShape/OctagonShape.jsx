@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useCylinder } from '@react-three/cannon';
 import { CONTACT_MATERIALS, COLLISION_GROUPS } from '../../configs/physics';
-import { CYLINDER_QUATERNION } from '../../configs/shape';
+import { OCTAGON_QUATERNION } from '../../configs/shape';
 
 
 const OctagonShape = ({
@@ -19,7 +19,7 @@ const OctagonShape = ({
     args,
     position,
     mass: 1,
-    quaternion: CYLINDER_QUATERNION,
+    quaternion: OCTAGON_QUATERNION,
     onCollide: handleOnCollide
   }), useRef(null));
   

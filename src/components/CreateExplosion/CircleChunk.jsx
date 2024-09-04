@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useBox } from '@react-three/cannon';
-import { CYLINDER_QUATERNION } from '../../configs/shape'
+import { CIRCLE_QUATERNION } from '../../configs/shape'
 
 const CircleChunk = ({
   angularVelocity,
@@ -24,7 +24,7 @@ const CircleChunk = ({
     mass,
     name,
     position,
-    quaternion: CYLINDER_QUATERNION,
+    quaternion: CIRCLE_QUATERNION,
     velocity
   }), useRef(null));
 

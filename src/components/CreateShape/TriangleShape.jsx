@@ -1,10 +1,10 @@
 import { useRef, useEffect, useState } from "react";
 import { useCylinder } from '@react-three/cannon';
 import { CONTACT_MATERIALS, COLLISION_GROUPS } from '../../configs/physics';
-import { CIRCLE_QUATERNION } from '../../configs/shape';
+import { TRIANGLE_QUATERNION } from '../../configs/shape';
 
 
-const CircleShape = ({
+const TriangleShape = ({
   args,
   position,
   color, 
@@ -19,7 +19,7 @@ const CircleShape = ({
     args,
     position,
     mass: 1,
-    quaternion: CIRCLE_QUATERNION,
+    quaternion: TRIANGLE_QUATERNION,
     onCollide: handleOnCollide
   }), useRef(null));
   
@@ -30,7 +30,7 @@ const CircleShape = ({
         name: e.target.name, 
         position: _positionRef.current,
         color: e.target.color,
-        chunkType: 'circleChunk'
+        chunkType: 'triangleChunk'
       }) 
     }
   }
@@ -49,4 +49,4 @@ const CircleShape = ({
   )
 }
 
-export default CircleShape
+export default TriangleShape
