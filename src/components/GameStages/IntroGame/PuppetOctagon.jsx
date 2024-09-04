@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useCylinder } from '@react-three/cannon';
-import { CYLINDER_QUATERNION } from '../../../configs/shape'
+import { OCTAGON_QUATERNION } from '../../../configs/shape'
 import { CONTACT_MATERIALS, COLLISION_GROUPS } from "../../../configs/physics";
 
 
@@ -18,7 +18,7 @@ const PuppetOctagon = ({
     mass: 1,
     material: CONTACT_MATERIALS.SHAPE,
     position,
-    quaternion: CYLINDER_QUATERNION
+    quaternion: OCTAGON_QUATERNION
   }), useRef(null));
 
 

@@ -1,10 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 import { 
-  SHAPE_WIDTH_HEIGHT, 
-  OCTAGON_RADIUS, 
+  CIRCLE_RADIAL_SEGMENTS,
   CIRCLE_RADIUS, 
   OCTAGON_RADIAL_SEGMENTS,
-  CIRCLE_RADIAL_SEGMENTS } from '../../../configs/shape'
+  OCTAGON_RADIUS, 
+  SHAPE_WIDTH_HEIGHT, 
+  TRIANGLE_RADIAL_SEGMENTS,
+  TRIANGLE_RADIUS,
+ } from '../../../configs/shape'
 import { COLORS } from '../../../configs/game'
 
 const halfSpace = SHAPE_WIDTH_HEIGHT * 0.5
@@ -14,7 +17,8 @@ const ARGS = {
   box: new Array(3).fill(SHAPE_WIDTH_HEIGHT),
   sphere: [SHAPE_WIDTH_HEIGHT * 0.5],
   octagon: [OCTAGON_RADIUS, OCTAGON_RADIUS, SHAPE_WIDTH_HEIGHT, OCTAGON_RADIAL_SEGMENTS],
-  circle: [CIRCLE_RADIUS, CIRCLE_RADIUS, SHAPE_WIDTH_HEIGHT, CIRCLE_RADIAL_SEGMENTS]
+  circle: [CIRCLE_RADIUS, CIRCLE_RADIUS, SHAPE_WIDTH_HEIGHT, CIRCLE_RADIAL_SEGMENTS],
+  triangle: [TRIANGLE_RADIUS, TRIANGLE_RADIUS, SHAPE_WIDTH_HEIGHT, TRIANGLE_RADIAL_SEGMENTS],
 }
 const GRID = {
   col: { 
@@ -41,8 +45,8 @@ export const INTRO_PUPPETS = [
     props: { color: COLORS.red, args: ARGS.circle, position: [GRID.col._1, GRID.row._3, 0]},
     key: uuidv4()
   },
-  { type: 'puppetBox',
-    props: { color: COLORS.green, args: ARGS.box, position: [GRID.col._2, GRID.row._3, 0]},
+  { type: 'puppetTriangle',
+    props: { color: COLORS.green, args: ARGS.triangle, position: [GRID.col._2, GRID.row._3, 0]},
     key: uuidv4()
   },
   { type: 'puppetBox',

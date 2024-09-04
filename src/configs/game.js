@@ -5,6 +5,7 @@ export const COLORS = {
 }
 
 export const LEVEL_ORDER = [
+  'triangles',
   'circles',
   'octagons', 
   'octBoxSphere', 

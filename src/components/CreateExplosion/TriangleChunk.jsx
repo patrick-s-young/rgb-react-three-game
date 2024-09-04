@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { useBox } from '@react-three/cannon';
-import { OCTAGON_QUATERNION } from '../../configs/shape'
+import { TRIANGLE_QUATERNION } from '../../configs/shape'
 
-const OctagonChunk = ({
+const TriangleChunk = ({
   angularVelocity,
   args,
   collisionFilterGroup, 
@@ -24,7 +24,7 @@ const OctagonChunk = ({
     mass,
     name,
     position,
-    quaternion: OCTAGON_QUATERNION,
+    quaternion: TRIANGLE_QUATERNION,
     velocity
   }), useRef(null));
 
@@ -50,4 +50,4 @@ const OctagonChunk = ({
   )
 }
 
-export default OctagonChunk
+export default TriangleChunk
