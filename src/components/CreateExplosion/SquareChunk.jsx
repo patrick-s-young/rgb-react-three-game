@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { useBox } from '@react-three/cannon';
 
-const BoxChunk = ({
+const SquareChunk = ({
   angularVelocity,
   args,
   collisionFilterGroup, 
@@ -46,4 +46,4 @@ const BoxChunk = ({
   )
 }
 
-export default BoxChunk
+export default SquareChunk

@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import { useBox } from '@react-three/cannon';
 import { CONTACT_MATERIALS, COLLISION_GROUPS } from '../../configs/physics';
 
-const BoxShape = ({
+const SquareShape = ({
   color, 
   position,
   handleRemoveShape,
@@ -25,7 +25,7 @@ const BoxShape = ({
         name: e.target.name, 
         position: _positionRef.current,
         color: e.target.color,
-        chunkType: 'boxChunk'
+        chunkType: 'squareChunk'
       }) 
     }
   }
@@ -43,4 +43,4 @@ const BoxShape = ({
   )
 }
 
-export default BoxShape
+export default SquareShape

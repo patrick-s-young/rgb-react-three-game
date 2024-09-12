@@ -11,7 +11,7 @@ import {
 import { COLORS } from '../../../configs/game'
 
 const halfSpace = SHAPE_WIDTH_HEIGHT * 0.5
-const xOffsetIncrement = SHAPE_WIDTH_HEIGHT * 1.03
+const xOffsetIncrement = SHAPE_WIDTH_HEIGHT * 1.1
 const yMin = 2.5 * SHAPE_WIDTH_HEIGHT
 const ARGS = {
   box: new Array(3).fill(SHAPE_WIDTH_HEIGHT),
@@ -27,7 +27,7 @@ const GRID = {
     _3: xOffsetIncrement
   },
   row: {
-    _10: yMin + 6 * SHAPE_WIDTH_HEIGHT,
+    _10: yMin + 5.25 * SHAPE_WIDTH_HEIGHT,
     _9: yMin + 5 * SHAPE_WIDTH_HEIGHT,
     _8: yMin + 4 * SHAPE_WIDTH_HEIGHT,
     _7: yMin + 3 * SHAPE_WIDTH_HEIGHT,
@@ -41,29 +41,29 @@ const GRID = {
 
 export const INTRO_PUPPETS = [
   // wave 1
-  { type: 'puppetCircle',
-    props: { color: COLORS.red, args: ARGS.circle, position: [GRID.col._1, GRID.row._3, 0]},
+  { type: 'puppetOctagon',
+    props: { color: COLORS.red, args: ARGS.octagon, position: [GRID.col._1, GRID.row._3, 0]},
+    key: uuidv4()
+  },
+  { type: 'puppetSquare',
+    props: { color: COLORS.green, args: ARGS.box, position: [GRID.col._2, GRID.row._3, 0]},
     key: uuidv4()
   },
   { type: 'puppetTriangle',
-    props: { color: COLORS.green, args: ARGS.triangle, position: [GRID.col._2, GRID.row._3, 0]},
-    key: uuidv4()
-  },
-  { type: 'puppetBox',
-    props: { color: COLORS.blue, args: ARGS.box, position: [GRID.col._3, GRID.row._3, 0]},
+    props: { color: COLORS.blue, args: ARGS.triangle, position: [GRID.col._3, GRID.row._3, 0]},
     key: uuidv4()
   },
 
   // wave 2
-  { type: 'puppetBox',
-    props: { color: COLORS.red, args: ARGS.box, position: [GRID.col._2, GRID.row._4, 0]},
+  { type: 'puppetTriangle',
+    props: { color: COLORS.red, args: ARGS.triangle, position: [GRID.col._2, GRID.row._4, 0]},
     key: uuidv4()
   },
   { type: 'puppetCircle',
     props: { color: COLORS.green, args: ARGS.circle, position: [GRID.col._3, GRID.row._4, 0]},
     key: uuidv4()
   },
-  { type: 'puppetBox',
+  { type: 'puppetSquare',
     props: { color: COLORS.blue, args: ARGS.box, position: [GRID.col._1, GRID.row._4, 0]},
     key: uuidv4()
   },
@@ -87,26 +87,26 @@ export const INTRO_PUPPETS = [
     props: { color: COLORS.red, args: ARGS.octagon,  position: [GRID.col._3, GRID.row._6, 0]},
     key: uuidv4()
   },
-  { type: 'puppetBox',
-    props: { color: COLORS.green, args: ARGS.box,  position: [GRID.col._1, GRID.row._6, 0]},
+  { type: 'puppetOctagon',
+    props: { color: COLORS.green, args: ARGS.octagon,  position: [GRID.col._1, GRID.row._6, 0]},
     key: uuidv4()
   },
-  { type: 'puppetCircle',
-    props: { color: COLORS.blue, args: ARGS.circle, position: [GRID.col._2, GRID.row._6, 0]},
+  { type: 'puppetOctagon',
+    props: { color: COLORS.blue, args: ARGS.octagon, position: [GRID.col._2, GRID.row._6, 0]},
     key: uuidv4()
   },
 
   // wave 5
-  { type: 'puppetBox',
-    props: { color: COLORS.red, args: ARGS.box, position: [GRID.col._2, GRID.row._8, 0]},
+  { type: 'puppetOctagon',
+    props: { color: COLORS.red, args: ARGS.octagon, position: [GRID.col._2, GRID.row._8, 0]},
     key: uuidv4()
   },
   { type: 'puppetCircle',
     props: { color: COLORS.green, args: ARGS.circle, position: [GRID.col._3, GRID.row._7 + halfSpace, 0]},
     key: uuidv4()
   },
-  { type: 'puppetOctagon',
-    props: { color: COLORS.blue, args: ARGS.octagon, position: [GRID.col._1, GRID.row._7 + halfSpace, 0]},
+  { type: 'puppetTriangle',
+    props: { color: COLORS.blue, args: ARGS.triangle, position: [GRID.col._1, GRID.row._7 + halfSpace, 0]},
     key: uuidv4()
   },
 
@@ -125,12 +125,12 @@ export const INTRO_PUPPETS = [
   },
 
   // wave 7
-  { type: 'puppetOctagon',
-    props: { color: COLORS.red, args: ARGS.octagon,  position: [GRID.col._3, GRID.row._9, 0]},
+  { type: 'puppetCircle',
+    props: { color: COLORS.red, args: ARGS.circle,  position: [GRID.col._3, GRID.row._9, 0]},
     key: uuidv4()
   },
-  { type: 'puppetBox',
-    props: { color: COLORS.green, args: ARGS.box,  position: [GRID.col._1, GRID.row._9, 0]},
+  { type: 'puppetCircle',
+    props: { color: COLORS.green, args: ARGS.circle,  position: [GRID.col._1, GRID.row._9, 0]},
     key: uuidv4()
   },
   { type: 'puppetCircle',

@@ -17,7 +17,7 @@ const useStore = create(
     shapes: [],
     shapesBoxHeight: 0,
     shapeId: 2,
-    levelIndex: -1,
+    levelIndex: 0,
     setShapesBoxHeight: (boxHeight) => set({ shapesBoxHeight: boxHeight }),
     spawnShape: ({x, y}) => {
       set((state) => {

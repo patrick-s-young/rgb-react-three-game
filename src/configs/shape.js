@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { CONTAINER_WIDTH } from './container'
 import { COLORS } from './game'
 
-export const SHAPE_WIDTH_HEIGHT = CONTAINER_WIDTH * .33 * 0.925
+export const SHAPE_WIDTH_HEIGHT = CONTAINER_WIDTH * .29 //3 * 0.925
 const cylinder_rotateX = new THREE.Quaternion().setFromAxisAngle( new THREE.Vector3( 1, 0, 0 ), Math.PI / 2)
 const circleOctagon_rotateY = new THREE.Quaternion().setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), Math.PI / 8)
 const triangle_rotateY = new THREE.Quaternion().setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), Math.PI / 3)
@@ -20,18 +20,14 @@ export const SHAPE = {
   colors: [COLORS.red, COLORS.green, COLORS.blue],
   widthHeight: SHAPE_WIDTH_HEIGHT,
   levels: {
-    'triangles': ['triangle', 'triangle', 'triangle'],
     'circles': ['circle', 'circle', 'circle'],
+    'triangleOctagonCircle': ['triangle', 'octagon', 'circle'],
     'octagons': ['octagon', 'octagon', 'octagon'],
-    'octBoxSphere': ['octagon', 'box', 'sphere'],
-    'spheres': ['sphere', 'sphere', 'sphere'],
-    'boxes': ['box', 'box', 'box'],
-    'sphereBoxSphere': ['sphere', 'box', 'sphere'],
-    'boxSphereBox': ['box', 'sphere', 'box']
+    'squareTriangleCircle': ['square', 'triangle', 'circle'],
+    'octagonSquareTriangle': ['octagon', 'square', 'triangle'],
   },
   geometryArgs: {
-    'sphere': { args: [CIRCLE_RADIUS]},
-    'box': { args: [SHAPE_WIDTH_HEIGHT, SHAPE_WIDTH_HEIGHT, SHAPE_WIDTH_HEIGHT]},
+    'square': { args: [SHAPE_WIDTH_HEIGHT, SHAPE_WIDTH_HEIGHT, SHAPE_WIDTH_HEIGHT]},
     'octagon': { args: [OCTAGON_RADIUS, OCTAGON_RADIUS, SHAPE_WIDTH_HEIGHT, OCTAGON_RADIAL_SEGMENTS]},
     'circle': { args: [CIRCLE_RADIUS, CIRCLE_RADIUS, SHAPE_WIDTH_HEIGHT, CIRCLE_RADIAL_SEGMENTS]},
     'triangle': { args: [TRIANGLE_RADIUS, TRIANGLE_RADIUS, SHAPE_WIDTH_HEIGHT, TRIANGLE_RADIAL_SEGMENTS]},
