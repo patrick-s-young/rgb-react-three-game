@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useBox } from '@react-three/cannon';
 import { CONTACT_MATERIALS, COLLISION_GROUPS } from "../../../configs/physics";
 
-const PuppetBox = ({
+const PuppetSquare = ({
   color, 
   position,
   args }) => {
@@ -27,4 +27,4 @@ const PuppetBox = ({
   )
 }
 
-export default PuppetBox
+export default PuppetSquare

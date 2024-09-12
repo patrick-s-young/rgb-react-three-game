@@ -5,14 +5,11 @@ export const COLORS = {
 }
 
 export const LEVEL_ORDER = [
-  'triangles',
   'circles',
+  'triangleOctagonCircle', 
   'octagons', 
-  'octBoxSphere', 
-  'boxes', 
-  'spheres', 
-  'boxSphereBox', 
-  'sphereBoxSphere'
+  'squareTriangleCircle', 
+  'octagonSquareTriangle'
 ]
 
 export const GAME_STAGES = {

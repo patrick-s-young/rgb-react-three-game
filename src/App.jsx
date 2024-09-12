@@ -17,7 +17,7 @@ function App() {
   const _spotLight = useMemo(() => new SpotLight('#fff'), []);
   const { containerWidth, containerHeight } = useStore((state) => state)
   const _aspect = containerWidth/containerHeight
-  const _position = [0, containerHeight * .52, 43]
+  const _position = [0, containerHeight * .51, 43]
   const _spotLightPosition = [0, 0, 5]
   const _spotLightTarget = [0, containerHeight * .49, 0]
 

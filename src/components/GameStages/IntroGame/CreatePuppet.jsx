@@ -1,4 +1,4 @@
-import PuppetBox from './PuppetBox'
+import PuppetSquare from './PuppetSquare'
 import PuppetLetter from './PuppetLetter'
 import PuppetSphere from './PuppetSphere'
 import PuppetOctagon from './PuppetOctagon'
@@ -7,7 +7,7 @@ import PuppetTriangle from './PuppetTriangle'
 
 const PUPPETS = {
   'puppetLetter': ({ props, key }) => <PuppetLetter {...props} key={key}/>,
-  'puppetBox': ({ props, key }) => <PuppetBox {...props} key={key}/>,
+  'puppetSquare': ({ props, key }) => <PuppetSquare {...props} key={key}/>,
   'puppetSphere': ({ props, key }) => <PuppetSphere {...props} key={key}/>,
   'puppetOctagon': ({ props, key }) => <PuppetOctagon {...props} key={key}/>,
   'puppetCircle': ({ props, key }) => <PuppetCircle {...props} key={key}/>,
