@@ -36,9 +36,19 @@ const TriangleShape = ({
   }
 
   useEffect(() => {
-    setTimeout(() => setVisible(true), 10)
-    const unsubscribe = api.position.subscribe((pos) => (_positionRef.current = pos))
-    return unsubscribe
+    let hasSyncedQuaternion = false
+    const unsubscribePosition = api.position.subscribe((pos) => (_positionRef.current = pos))
+    const unsubscribeQuaternion = api.quaternion.subscribe(() => {
+      if (!hasSyncedQuaternion) {
+        hasSyncedQuaternion = true
+        setVisible(true)
+      }
+    })
+
+    return () => {
+      unsubscribePosition()
+      unsubscribeQuaternion()
+    }
   }, [])
 
   return (
